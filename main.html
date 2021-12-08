@@ -10,14 +10,17 @@
         <h1>ToDoアプリ</h1>
         <div id="app">
             <form class="input_form" @submit.prevent>
-                <p>新規：<input type="text" v-model="addtask"></p>
+                <input type="text" v-model="addtask">
                 <button @click="add_task">追加</button>
             </form>
             <ul>
                 <li v-for="(task, index) in tasks">
                     <input type="checkbox" v-model="task.isDone">
-                    <span :class="{isdone: task.isDone}">{{ task.task }}</span>
-                    <button @click="delete_task(index)">削除</button>
+                    <span v-if="index!=edit" :class="{isdone: task.isDone}">{{ task.task }}</span>
+                    <span v-else><input v-model="task.task"></span>
+                    <button v-if="index!=edit" @click="edit_task(index)">編集</button>
+                    <button v-else @click="change_task()">変更</button>
+                    <button v-if="index!=edit" @click="delete_task(index)">削除</button>
                 </li>
             </ul>
         </div>
