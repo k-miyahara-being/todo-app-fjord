@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>ToDo App</title>
+        <script src="https://unpkg.com/vue"></script>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <h1>ToDoアプリ</h1>
+        <div id="app">
+            <form class="input_form" @submit.prevent>
+                <input type="text" v-model="addtask">
+                <button @click="add_task">追加</button>
+            </form>
+            <ul>
+                <li v-for="(task, index) in tasks" :key="tasks.id">
+                    <input type="checkbox" v-model="task.isDone">
+                    <span v-show="index!=edit">
+                        <span :class="{isdone: task.isDone}">{{ task.task }}</span>
+                        <button @click="edit_task(index)">編集</button>
+                        <button @click="delete_task(index)">削除</button>
+                    </span>
+                    <span v-show="index==edit">
+                        <input v-model="task.task">
+                        <button v-show="index==edit" @click="change_task()">変更</button>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript" src="main.js"></script>
+    </body>
+</html>

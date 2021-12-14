@@ -1,0 +1,44 @@
+body {
+    text-align: center;
+    border: 2px gray dashed;
+}
+
+h1 {
+    font-size: 30px;
+    color: white;
+    background-color: gray;
+    padding: 10px;
+}
+
+input, span {
+    font-size: 20px;
+}
+
+form button {
+    font-size: 20px;
+    margin-left: 5px;
+
+}
+
+ul {
+    display: inline-block;
+    width: 50%;
+    list-style-type: none;
+    text-align: left;
+}
+
+ul button {
+    right: 0;
+    font-size: 20px;
+    float: right;
+    margin-left: 5px;
+}
+
+li {
+    padding: 1em 0;
+}
+
+.isdone {
+    color: gray;
+    text-decoration:line-through;
+}
