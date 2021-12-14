@@ -14,13 +14,17 @@
                 <button @click="add_task">追加</button>
             </form>
             <ul>
-                <li v-for="(task, index) in tasks">
+                <li v-for="(task, index) in tasks" :key="tasks.id">
                     <input type="checkbox" v-model="task.isDone">
-                    <span v-if="index!=edit" :class="{isdone: task.isDone}">{{ task.task }}</span>
-                    <span v-else><input v-model="task.task"></span>
-                    <button v-if="index!=edit" @click="edit_task(index)">編集</button>
-                    <button v-else @click="change_task()">変更</button>
-                    <button v-if="index!=edit" @click="delete_task(index)">削除</button>
+                    <span v-show="index!=edit">
+                        <span :class="{isdone: task.isDone}">{{ task.task }}</span>
+                        <button @click="edit_task(index)">編集</button>
+                        <button @click="delete_task(index)">削除</button>
+                    </span>
+                    <span v-show="index==edit">
+                        <input v-model="task.task">
+                        <button v-show="index==edit" @click="change_task()">変更</button>
+                    </span>
                 </li>
             </ul>
         </div>

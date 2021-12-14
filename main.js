@@ -1,9 +1,9 @@
 var app = new Vue({
     el: '#app',
     data: { 
-        tasks: [],
-        addtask: '',
-        edit: -1,
+        tasks: null,
+        addtask: null,
+        edit: null,
     },
     mounted(){
         this.tasks = JSON.parse(localStorage.getItem('items'))
@@ -15,7 +15,7 @@ var app = new Vue({
                 isDone: false
             })
             this.save_task()
-            this.addtask = ''
+            this.addtask = null
         },
         save_task(){
             localStorage.setItem('items', JSON.stringify(this.tasks))
@@ -24,7 +24,7 @@ var app = new Vue({
             this.edit = index
         },
         change_task(){
-            this.edit = -1
+            this.edit = null
             this.save_task()
         },
         delete_task(index){
